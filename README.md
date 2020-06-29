@@ -152,7 +152,7 @@ Notes:
 
 ## Sensors
 
-<img src="./images/sensor1.jpg" width="150" />
+<img src="./images/sensor1.jpg" width="1000" />
 
 ### Temperature and Humidity
 
