@@ -54,7 +54,7 @@ Unfortunately the third party dev scene for domoticz is nearly non-existent now 
 I installed HA as a guest on a KVM (proxmox) about 2 weeks ago and the initial issues of getting familiarized with yaml, it&#39;s been pretty smooth going. I still feel that there is room for optimization, especially for some simple/basic things like adding virtual switches (easily) or maintaining downsampled longer term records (both of which domoticz does exceptionally well) but all said, I am glad I switched.
 
 
-<img src="./images/BR.jpg" width="150" />.  <img src="./images/kitchen.jpg" width="150" />.  <img src="./images/Living.jpg" width="150" />. <img src="./images/porch.jpg.jpg" width="150" />.  <img src="./images/study.jpg" width="150" />
+<img src="./images/BR.jpg" width="150" />.  <img src="./images/kitchen.jpeg" width="150" />.  <img src="./images/Living.jpeg" width="150" />. <img src="./images/porch.jpg" width="150" />.  <img src="./images/study.jpg" width="150" />
 
 
 Here is my configuration details and files in case it helps someone get started.
