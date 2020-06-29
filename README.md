@@ -1,36 +1,69 @@
 # Home Assistant
 
-A running summary of my system migration from Domoticz to Home-Assistant.
+A running summary of my system migration from Domoticz to Home-Assistant. I put a domoticz server in production
 
 The long term plan is to have HA do all of the heavy lifting but to keep domoticz running primarily for sensors and logging.
 
+19th June – First Install
+
+![image info](./images/BR.jpg){:height="50%" width="50%"} 
 # Table of Contents
 
-**[Home Assistant 1](#_Toc44342239)**
+**[Home Assistant 1](#_Toc44367636)**
 
-**[Equipment 1](#_Toc44342240)**
+**[Equipment 1](#_Toc44367637)**
 
-**[1)](#_Toc44342241)****Servers 1**
+**[1)](#_Toc44367638)****Servers 1**
 
-**[2)](#_Toc44342242)****Network 1**
+**[2)](#_Toc44367639)****Network 1**
 
-[a)Router 1](#_Toc44342243)
+[a)Router 1](#_Toc44367640)
 
-[b)Access Points 1](#_Toc44342244)
+[b)Access Points 1](#_Toc44367641)
 
-[c)Switches 1](#_Toc44342245)
+[c)Switches 1](#_Toc44367642)
 
-**[3)](#_Toc44342246)****Voice Control/ Smart Speaker 1**
+**[3)](#_Toc44367643)****Voice Control/ Smart Speaker 1**
 
-**[4)](#_Toc44342247)****Lights 1**
+**[4)](#_Toc44367644)****Lights 1**
 
-**[5)](#_Toc44342248)****Switches 1**
+**[5)](#_Toc44367645)****Switches 1**
 
-**[6)](#_Toc44342249)****Hubs 1**
+**[6)](#_Toc44367646)****Hubs 1**
 
-**[7)](#_Toc44342250)****Media Players and multi-room audio 1**
+**[7)](#_Toc44367647)****Media Players and multi-room audio 1**
 
-**[8)](#_Toc44342251)****Sensors 1**
+**[8)](#_Toc44367648)****Sensors 1**
+
+[Temperature and Humidity 1](#_Toc44367649)
+
+[Smoke / Fire/ Carbon Monoxide 1](#_Toc44367650)
+
+[Power Monitoring 1](#_Toc44367651)
+
+**[9)](#_Toc44367652)****Remote Control 1**
+
+**[10)](#_Toc44367653)****Cameras &amp; Security 1**
+
+**[11)](#_Toc44367654)****Logging and Gr 1**
+
+All configuration available in config.yaml and other linked files
+
+# Background
+
+I started setting up my first home automation back in 2013 after I spotted a deal on a pair of wemo plug/ sensor in a B&amp;M store while on a holiday in London. Coincidentally, we also brought our first house a few months later so that&#39;s what triggered this hobby.
+
+Back then, IoT and home automation was not really a thing in India and Amazon India hasn&#39;t even launched (which I guess is my primary source for all equipment now.) Nonetheless, there was eBay and I was able to (very slowly) add equipment through super snail mail parcels from aliexpress/ ebay and / or items picked on overseas trips.
+
+The current situation now is of course very different.
+
+I started off with Domoticz, a platform that I still dig! It has served me extremely well for close to 7 years. I dabbled with HA and openhab once or twice in the interim but was turned off by yaml and its super finicky indentation.
+
+Unfortunately the third party dev scene for domoticz is nearly non-existent now and native integration for devices is quite limited. I am not a software guy/ coder but had somehow managed to patch together several working scripts and plugins to make the whole thing work somehow. I guess the last straw for me was when an accidental update earlier this month broke my working system and restoration took a day and more because of all the a-la-carte scripts and binaries I had on my system.
+
+I installed HA as a guest on a KVM (proxmox) about 2 weeks ago and the initial issues of getting familiarized with yaml, it&#39;s been pretty smooth going. I still feel that there is room for optimization, especially for some simple/basic things like adding virtual switches (easily) or maintaining downsampled longer term records (both of which domoticz does exceptionally well) but all said, I am glad I switched.
+
+Here is my configuration details and files in case it helps someone get started.
 
 # Equipment
 
@@ -85,7 +118,7 @@ Someday I will clean this up, for now, the re-cabling does not seem to be worth 
 
 Notes:
 
-1. The LIFX bulbs are very bright and color control is very accurate. Unfortunately their wi-fi connection is flakey and requires a restart every now &amp; then.Cannot recommend them anymore
+1. The LIFX bulbs are very bright and color control is very accurate. Unfortunately their wi-fi connection is flakey and requires a restart every now &amp; then. Cannot recommend them anymore
 2. The Hue bulbs are amazingly stable. They have been running stable for years with no flakiness whatsoever. Maybe it&#39;s because they use zigbee. Unfortunately they are not bright enough (at most comparable to a 60W incandescent) and I would have hoped for brighter output given the price
 3. **ESP8266 Tasmota** : My current favorite. The only issue is that finding the right one is a bit of a hit&amp; miss. Most lights available on Amazon India (or elsewhere) are based on generic Tuya/ Smartlife firmware .
   - Now one can use the Tuya/smartlife integration directly on HA but using the MQTT integration is a lot more reliable
@@ -117,7 +150,7 @@ Notes:
   1. 2 X Klipsch Gate – Frontyard and Guest room speakers
   2. 1 X Paradigm PW Link – Kitchen Speakers
   3. 1X Paradign PW Amp – Bedroom Speakers
-4. Homepods
+  4. Homepods
 
 1.
 ## Sensors
@@ -146,5 +179,53 @@ Now I have ordered 2 more pairs to have 3 separate sensor reading for each phase
 1.
 ## Remote Control
 
-1. 2X Harmony hub – 1 for living room TV, audio and HVAC, 1 for Home Theater projector, Audio and HVAC
-2. 1 X ESP8266 Tasmota IR – Based on a Oakter remote flashed to run Tasmota IR. The HVAC control required a custom called [tasmota\_ihvac](https://www.home-assistant.io/integrations/tasmota_irhvac)
+1. 2X Harmony hub – 1 for living room TV, audio and HVAC, 1 for Home Theater projector, Audio and HVAC, integrated via native HA harmony integration
+2. 1 X ESP8266 Tasmota IR – Based on a Oakter remote flashed to run Tasmota IR. The HVAC control required a custom integration called [tasmota\_ihvac](https://www.home-assistant.io/integrations/tasmota_irhvac)
+
+1.
+## Cameras &amp; Security
+
+#### Lock
+
+1. Rear Door: Kwikset Z-wave lever lock – Integrated with Smartthings but not with HA. Should be easy but I cannot think of a use-case
+2. Main Door: Yale YDM7116 – This one is an oddball. The lock uses a BT module that is used for phones in proximity. Additionally, it uses a wifi-BT bridge called the yale link bridge that enables remote connectivity.
+
+Notes: The Kwikset Z\_wave is very flakey. It intermittently Lost connection with the ST hub – and worse, each time that happens, it results In its battery getting drained – presumably because it keeps searching for the hub. In addition, the lock hardware is quite flimsy. Cannot recommend this at all – Also the reason I purchased the Yale and moved this to the rear door.
+
+In contrast, the yale build quality is massively better and the connection is super reliable. Unfortunately there is no documentation available on the Yale link bridge, nor can I find much info on the interwebs either
+
+#### Camera
+
+I use a mix of 7 cameras from Foscam and Hikvision all wired to a Hikvision NVR. I initially enabled rtsp streaming but later switched to static images instead for faster renders on lovelace. The rationale being I can always use the Hikvision app if I need to view the actual stream.
+
+#### Doorbell
+
+Ring Video Doorbell (the basic variant) – Integrated via HA Ring native. Automation to flash a couple of lights when someone rings the bell.
+
+1.
+## Logging and Graphing
+
+Now I really wish HA had native logging support for long term data, esp for sensors as I am sure this would be a very common use case.
+
+As things stand, I have configured an influxdb installation on another VM coupled with the Grafana plugin. It was a somewhat steep learning curve and I guess I am using these two tools to only 5% of their capability but for now, this will do.
+
+As it&#39;s been only a few days of using influx, I have not yet got down to setting up downsampling sensor data but I guess I will want to get it done with before a month or so.
+
+Here is a sample grab from domoticz that shows how downsampling is handled on it.
+
+1.
+## Other bridges on the network
+
+1.
+### HABRIDGE
+
+Used for Alexa integration. I really cannot say enough good things about [habridge](https://github.com/bwssytems/ha-bridge).
+
+Setup and installation is trivial on any linux box. Configuring it for domoticz or HA is extremely user friendly and intuituive. Once configured, it is also very reliable. This has historically been the primary method of interacting with devices in my household by everyone .
+
+If you have not used habridge, I really recommend you do try it once.
+
+1.
+### Homebridge
+
+Was used extensively for [homekit](https://github.com/homebridge/homebridge) integration over the last few years. I have for now disabled this as I play around with the native homekit integration on HA
