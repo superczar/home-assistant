@@ -1,0 +1,49 @@
+- platform: rest
+  name: Bedroom Temperature
+  resource: http://192.168.5.100:8080/json.htm?type=devices&rid=42
+  value_template: '{{value_json.result[0].Temp}}'
+  device_class: temperature
+  unit_of_measurement: '°C'
+  
+
+- platform: rest
+  name: House Temperature
+  resource: http://192.168.5.100:8080/json.htm?type=devices&rid=41
+  value_template: '{{value_json.result[0].Temp}}'
+  device_class: temperature
+  unit_of_measurement: '°C'
+  
+- platform: rest
+  name: Kitchen Temperature
+  resource: http://192.168.5.100:8080/json.htm?type=devices&rid=68
+  value_template: '{{value_json.result[0].Temp}}'
+  device_class: temperature
+  unit_of_measurement: '°C'
+  
+- platform: rest
+  name: Closet Temperature
+  resource: http://192.168.5.100:8080/json.htm?type=devices&rid=101
+  value_template: '{{value_json.result[0].Temp}}'
+  device_class: temperature
+  unit_of_measurement: '°C'
+  
+- platform: rest
+  name: Barometric Pressure
+  resource: http://192.168.5.100:8080/json.htm?type=devices&rid=68
+  value_template: '{{value_json.result[0].Barometer}}'
+  device_class: pressure
+  unit_of_measurement: 'hPa'
+
+- platform: rest
+  name: Phase I Power
+  resource: http://192.168.5.100:8080/json.htm?type=devices&rid=772
+  value_template: '{{value_json.result[0].Usage.split()[0] | int }}'
+  device_class: Power
+  unit_of_measurement: 'W'
+ 
+- platform: apcupsd
+  resources:
+      - linev
+      - loadpct
+      - bcharge
+      - timeleft

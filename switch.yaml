@@ -1,0 +1,38 @@
+#################################################################
+##  Switches
+#################################################################
+- platform: command_line
+  switches:
+    bedroom_dehumidifier:
+        command_on: /usr/bin/curl -g http://192.168.5.4/cm?cmnd=IRhvac%20{"Vendor":"LG","Model":1,"Power":"On","Mode":"Dry","FanSpeed":"Medium","Temp":"24"}
+        command_off: /usr/bin/curl -g http://192.168.5.4/cm?cmnd=IRhvac%20{"Vendor":"LG","Model":1,"Power":"Off"}
+        friendly_name: "Bedroom Dehumidifier"
+
+
+- platform: mqtt
+  name: "Closet Cooler"
+  state_topic: "cmnd/2chswitch/POWER1"
+  command_topic: "cmnd/2chswitch/POWER1"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+
+- platform: mqtt
+  name: "Denon Cooler"
+  state_topic: "stat/2chswitch/POWER2"
+  command_topic: "cmnd/2chswitch/POWER2"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+#################################################################
+##  Template Switches
+#################################################################
+
+
+
+
+        ##########################################################
+        ##Study AC
+        ##########################################################

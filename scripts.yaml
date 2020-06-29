@@ -1,0 +1,58 @@
+######################################################
+#########Amazon Airconditioner Scripts#########
+######################################################
+
+
+script_ht_aircon_on:
+    sequence:
+      - service: remote.send_command
+        data_template:
+          entity_id: remote.home_theatre
+          device: "69714086"
+          command: "PowerToggle"
+
+
+script_ht_aircon_off:
+    sequence:
+      - service: remote.send_command
+        data_template:
+          entity_id: remote.home_theatre
+          device: "69714086"
+          command: "Power Off"
+
+script_ht_aircon_dehumidifier:
+    sequence:
+      - service: remote.send_command
+        data_template:
+          entity_id: remote.home_theatre
+          device: "69714086"
+          command: "Dehumidifier"
+
+script_ht_aircon_26c:
+    sequence:
+      - service: remote.send_command
+        data_template:
+          entity_id: remote.home_theatre
+          device: "69714086"
+          command: "26C"
+
+script_ht_aircon_jetcool:
+    sequence:
+      - service: remote.send_command
+        data_template:
+          entity_id: remote.home_theatre
+          device: "69714086"
+          command: "TempCooler"
+
+######################################################
+######### Polk Subwoofer Scripts#########
+######################################################
+
+
+script_polk:
+    sequence:
+      - service: remote.send_command
+        data_template:
+          entity_id: remote.bedroom
+          device: "70000055"
+          command: "PowerToggle"
