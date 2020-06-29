@@ -1,3 +1,4 @@
+
 # Home Assistant
 
 A running summary of my system migration from Domoticz to Home-Assistant. I put a domoticz server in production
@@ -5,49 +6,38 @@ A running summary of my system migration from Domoticz to Home-Assistant. I put 
 The long term plan is to have HA do all of the heavy lifting but to keep domoticz running primarily for sensors and logging.
 
 19th June – First Install
-
-![image info](./images/BR.jpg){:height="50%" width="50%"} 
-# Table of Contents
-
-**[Home Assistant 1](#_Toc44367636)**
-
-**[Equipment 1](#_Toc44367637)**
-
-**[1)](#_Toc44367638)****Servers 1**
-
-**[2)](#_Toc44367639)****Network 1**
-
-[a)Router 1](#_Toc44367640)
-
-[b)Access Points 1](#_Toc44367641)
-
-[c)Switches 1](#_Toc44367642)
-
-**[3)](#_Toc44367643)****Voice Control/ Smart Speaker 1**
-
-**[4)](#_Toc44367644)****Lights 1**
-
-**[5)](#_Toc44367645)****Switches 1**
-
-**[6)](#_Toc44367646)****Hubs 1**
-
-**[7)](#_Toc44367647)****Media Players and multi-room audio 1**
-
-**[8)](#_Toc44367648)****Sensors 1**
-
-[Temperature and Humidity 1](#_Toc44367649)
-
-[Smoke / Fire/ Carbon Monoxide 1](#_Toc44367650)
-
-[Power Monitoring 1](#_Toc44367651)
-
-**[9)](#_Toc44367652)****Remote Control 1**
-
-**[10)](#_Toc44367653)****Cameras &amp; Security 1**
-
-**[11)](#_Toc44367654)****Logging and Gr 1**
-
 All configuration available in config.yaml and other linked files
+
+
+- [Home Assistant](#home-assistant)
+- [Background](#background)
+- [Equipment](#equipment)
+  * [Servers](#servers)
+  * [Network](#network)
+    + [Router](#router)
+    + [Access Points](#access-points)
+    + [Switches](#switches)
+  * [Voice Control/ Smart Speaker](#voice-control--smart-speaker)
+  * [Lights](#lights)
+  * [Switches](#switches-1)
+  * [Hubs](#hubs)
+  * [Media Players and multi-room audio](#media-players-and-multi-room-audio)
+  * [Sensors](#sensors)
+    + [Temperature and Humidity](#temperature-and-humidity)
+    + [Smoke / Fire/ Carbon Monoxide](#smoke---fire--carbon-monoxide)
+    + [Power Monitoring](#power-monitoring)
+  * [Remote Control](#remote-control)
+  * [Cameras &amp; Security](#cameras--amp--security)
+      - [Lock](#lock)
+      - [Camera](#camera)
+      - [Doorbell](#doorbell)
+  * [Logging and Graphing](#logging-and-graphing)
+  * [Other bridges on the network](#other-bridges-on-the-network)
+    + [HABRIDGE](#habridge)
+    + [Homebridge](#homebridge)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 # Background
 
@@ -63,11 +53,15 @@ Unfortunately the third party dev scene for domoticz is nearly non-existent now 
 
 I installed HA as a guest on a KVM (proxmox) about 2 weeks ago and the initial issues of getting familiarized with yaml, it&#39;s been pretty smooth going. I still feel that there is room for optimization, especially for some simple/basic things like adding virtual switches (easily) or maintaining downsampled longer term records (both of which domoticz does exceptionally well) but all said, I am glad I switched.
 
+
+<img src="./images/BR.jpg" width="150" />.  <img src="./images/kitchen.jpg" width="150" />.  <img src="./images/Living.jpg" width="150" />. <img src="./images/porch.jpg.jpg" width="150" />.  <img src="./images/study.jpg" width="150" />
+
+
 Here is my configuration details and files in case it helps someone get started.
 
 # Equipment
 
-1.
+
 ## Servers
 
 - Proxmox hypervisor running 4 VMs (i5-4130 , 12GB RAM, 120GB SSD, 4TB HDD)
@@ -75,7 +69,9 @@ Here is my configuration details and files in case it helps someone get started.
   - HAbridge running on an existing openmediavault VM
 - Domoticz running on a RPi2
 
-1.
+<img src="./images/proxmox.jpg" width="400" />
+
+
 ## Network
 
 The network setup is slightly convoluted as my primary ISP uses CGNAT. The primary is a 100mbps fiber connection while the secondary is a Point-to-point wifi link with my housing community wireless distribution system (50mbps fiber)
@@ -101,14 +97,15 @@ A mix of multiple partially daisy-chained switches. The loadbalanced WAN from ER
 
 Someday I will clean this up, for now, the re-cabling does not seem to be worth the effort
 
-1.
+
 ## Voice Control/ Smart Speaker
 
 1. **Echo** – 6 devices, 2 X Echo Original, 2X Echo Dot, 1 X Echo Show, 1 X Echo Spot – Linked via habridge
 2. **Homepod** – 2 devices – Linked via HA native homekit integration
 3. **Google Nest hub** – I had picked this on whim but turns out I don&#39;t like the cloud only model used by Google . It&#39;s unreliable and slow. Not integrated and left stand-alone
 
-1.
+<img src="./images/homekit.jpg" width="150" />
+
 ## Lights
 
 1. **LIFX** : 5 entities that use the HA native LIFX integration
@@ -127,21 +124,21 @@ Notes:
   - The 12W variant is plenty bright – equivalent to a 100W incandescent
 4. Yeelight: Good &amp; reliable with LAN control. Slightly pricier than the Tuya
 
-1.
+
 ## Switches
 
-1. Wemo: The device that got this hobby started. I had picked a Wemo gen1 motion sensor/ switch combo sometime back in 2013 on a trip to the UK. I don&#39;t think IoT or smart devices were available back home at that point in time  . The plug still works and is setup with my garden floodlight using the HA native Wemo integration
+1. Wemo: The device that got this hobby started.. The plug still works and is setup with my garden floodlight using the HA native Wemo integration
 2. Sonoff/ Smartlife devices flashed to ESP8266 TASMOTA: 7 devices. 5 work as normal switches while 2 need a special mention
   - 1 X 2 wired to cooling fans for my 2 AV Receiver. They are linked to automation to switch them on if the respective AV receiver changes state to On and vice-versa
 
-1.
+
 ## Hubs
 
 1. **Smartthings** : Was used extensively at one point in time. Currently in use for 5X Z-wave smoke alarms . Not integrated into HA as no real need for integration
 2. **Hue Hub**
 3. **Yale wifi bridge** : Used for the main door lock (YDM7116) . Unfortunately no documentation on API available. Wireshark capture didn&#39;t yield anything of value in the first pass. Currently in use as a standalone bridge with its own phone app. Need to get down to solving for this integration at some point in time.
 
-1.
+
 ## Media Players and multi-room audio
 
 1. Denon X3500 – Shows up in HA with no fuss. Also used for driving the exhaust automation .
@@ -152,7 +149,6 @@ Notes:
   3. 1X Paradign PW Amp – Bedroom Speakers
   4. Homepods
 
-1.
 ## Sensors
 
 ### Temperature and Humidity
@@ -176,13 +172,11 @@ My plan was to wire the PZEM004T in the same way but realized that the readings 
 
 Now I have ordered 2 more pairs to have 3 separate sensor reading for each phase that can be combined later on in Grafana
 
-1.
 ## Remote Control
 
 1. 2X Harmony hub – 1 for living room TV, audio and HVAC, 1 for Home Theater projector, Audio and HVAC, integrated via native HA harmony integration
 2. 1 X ESP8266 Tasmota IR – Based on a Oakter remote flashed to run Tasmota IR. The HVAC control required a custom integration called [tasmota\_ihvac](https://www.home-assistant.io/integrations/tasmota_irhvac)
 
-1.
 ## Cameras &amp; Security
 
 #### Lock
@@ -202,7 +196,6 @@ I use a mix of 7 cameras from Foscam and Hikvision all wired to a Hikvision NVR.
 
 Ring Video Doorbell (the basic variant) – Integrated via HA Ring native. Automation to flash a couple of lights when someone rings the bell.
 
-1.
 ## Logging and Graphing
 
 Now I really wish HA had native logging support for long term data, esp for sensors as I am sure this would be a very common use case.
@@ -213,10 +206,8 @@ As it&#39;s been only a few days of using influx, I have not yet got down to set
 
 Here is a sample grab from domoticz that shows how downsampling is handled on it.
 
-1.
 ## Other bridges on the network
 
-1.
 ### HABRIDGE
 
 Used for Alexa integration. I really cannot say enough good things about [habridge](https://github.com/bwssytems/ha-bridge).
@@ -225,7 +216,6 @@ Setup and installation is trivial on any linux box. Configuring it for domoticz 
 
 If you have not used habridge, I really recommend you do try it once.
 
-1.
 ### Homebridge
 
 Was used extensively for [homekit](https://github.com/homebridge/homebridge) integration over the last few years. I have for now disabled this as I play around with the native homekit integration on HA
