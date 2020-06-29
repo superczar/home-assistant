@@ -1,12 +1,12 @@
 
 # Home Assistant
 
-A running summary of my system migration from Domoticz to Home-Assistant. I put a domoticz server in production
+A running summary of my system migration from Domoticz to Home-Assistant. I put a domoticz server in production back in 2013 but migrating over to HA over the last few weeks.
 
 The long term plan is to have HA do all of the heavy lifting but to keep domoticz running primarily for sensors and logging.
 
 19th June – First Install
-All configuration available in config.yaml and other linked files
+All configuration available in config.yaml and other files
 
 
 - [Home Assistant](#home-assistant)
