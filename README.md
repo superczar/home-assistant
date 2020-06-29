@@ -69,14 +69,14 @@ Here is my configuration details and files in case it helps someone get started.
   - HAbridge running on an existing openmediavault VM
 - Domoticz running on a RPi2
 
-<img src="./images/proxmox.jpg" width="400" />
+<img src="./images/proxmox.jpg" width="800" />
 
 
 ## Network
 
 The network setup is slightly convoluted as my primary ISP uses CGNAT. The primary is a 100mbps fiber connection while the secondary is a Point-to-point wifi link with my housing community wireless distribution system (50mbps fiber)
 
-While my primary ISP is fairly reliable , they unfortunately use CGNAT. For external access, I have setup an Amazon Lightsail VPN that I openvpn to. Details here.
+While my primary ISP is fairly reliable , they unfortunately use CGNAT. For external access, I have setup an Amazon Lightsail VPN that a linux box on the network openvpn connects to. Both the lightsail server and the linux system have appropriate port forwarding rules configured. if I access my lightsail server externally, all traffic is routed transparently to the right device on my home network
 
 1.
 ### Router
