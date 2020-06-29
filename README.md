@@ -42,7 +42,7 @@ All configuration available in config.yaml and other files
 
 # Background
 
-I started setting up my first home automation back in 2013 after I spotted a deal on a pair of wemo plug/ sensor in a B&amp;M store while on a holiday in London. Coincidentally, we also brought our first house a few months later so that&#39;s what triggered this hobby.
+I started setting up my first home automation back in 2013 after I spotted a deal on a pair of wemo plug/ sensor in a B&amp;M store while on a holiday in London. Coincidentally, we also brought our first house a few months later so that&#39;s what triggered ~~hobby~~ slide down a rabbithole.
 
 Back then, IoT and home automation was not really a thing in India and Amazon India hasn&#39;t even launched (which I guess is my primary source for all equipment now.) Nonetheless, there was eBay and I was able to (very slowly) add equipment through super snail mail parcels from aliexpress/ ebay and / or items picked on overseas trips.
 
