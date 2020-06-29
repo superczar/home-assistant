@@ -1,0 +1,15 @@
+# Example configuration.yaml entry to ping host 192.168.0.1 with 2 packets every 30 seconds.
+  - platform: ping
+    host: 192.168.5.83
+    count: 2
+    scan_interval: 4
+    
+    
+    
+  - platform: mqtt
+    name: "Study Motion Sensor"
+    state_topic: "stat/washroom/PIR1"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: motion
+    qos: 1

@@ -1,0 +1,246 @@
+- id: '1592569388635'
+  alias: ht_devices_on
+  description: Living Room TV audio on
+  trigger:
+  - entity_id: media_player.x3500
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - device_id: cb8e58a23df0422fbd3182f6f1a01520
+    domain: switch
+    entity_id: switch.sonoff_sonoff
+    type: turn_on
+  - service: script.script_polk
+- id: '1592569583792'
+  alias: ht_livingroom_devices_off
+  description: ''
+  trigger:
+  - entity_id: media_player.x3500
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - device_id: cb8e58a23df0422fbd3182f6f1a01520
+    domain: switch
+    entity_id: switch.sonoff_sonoff
+    type: turn_off
+  - data: {}
+    service: script.script_polk
+- id: '1592595528213'
+  alias: Good Night time
+  description: ''
+  trigger:
+  - at: 00:30
+    platform: time
+  condition: []
+  action:
+  - scene: scene.sleep_time
+- id: '1592599869975'
+  alias: Good Morning
+  description: ''
+  trigger:
+  - event: sunrise
+    offset: -00:30:00
+    platform: sun
+  condition: []
+  action:
+  - scene: scene.daylight
+- id: '1592600273051'
+  alias: Powercut resume
+  description: Switch off lights if power goes out and backup kicks in
+  trigger:
+  - entity_id: binary_sensor.ping_binary_sensor
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - before: sunset
+    condition: sun
+  - condition: or
+    conditions:
+    - after: 00:00
+      condition: time
+  action:
+  - delay: 00:1:10
+  - scene: scene.daylight
+- id: '1592604993124'
+  alias: Geyser Off
+  description: ''
+  trigger:
+  - entity_id: switch.bf0d4aaa25d7bd1cb0jzfe
+    for: 00:30:00
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - device_id: 22e4a29cbc7d46ac9020cf01cd50f809
+    domain: switch
+    entity_id: switch.bf0d4aaa25d7bd1cb0jzfe
+    type: turn_off
+- id: '1592645027862'
+  alias: Study Aircon On switch
+  description: ''
+  trigger:
+  - entity_id: input_boolean.study_ac
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    entity_id: script.script_ht_aircon_on
+    service: script.script_ht_aircon_on
+- id: '1592645097542'
+  alias: Study Aircon Off switch
+  description: ''
+  trigger:
+  - entity_id: input_boolean.study_ac
+    from: 'on'
+    platform: state
+    to: 'off'
+  - entity_id: input_boolean.study_ac26
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data: {}
+    service: script.script_ht_aircon_off
+- id: '1592657254588'
+  alias: Polk Sub Power1
+  description: ''
+  trigger:
+  - entity_id: input_boolean.polk_sub
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    service: script.script_polk
+- id: '1592657321293'
+  alias: Polk Sub Power
+  description: ''
+  trigger:
+  - entity_id: input_boolean.polk_sub
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data: {}
+    service: script.script_polk
+- id: '1592663170143'
+  alias: Evening Lights On
+  description: ''
+  trigger:
+  - event: sunset
+    offset: 00:15
+    platform: sun
+  condition: []
+  action:
+  - scene: scene.evening_lights
+- id: '1592755399582'
+  alias: Pre evening lights
+  description: ''
+  trigger:
+  - event: sunset
+    offset: -00:15:00
+    platform: sun
+  condition: []
+  action:
+  - scene: scene.pre_dusk
+- id: '1592755853030'
+  alias: Geyser Morning Switch On
+  description: ''
+  trigger:
+  - at: 08:00:00
+    platform: time
+  condition: []
+  action:
+  - device_id: 22e4a29cbc7d46ac9020cf01cd50f809
+    domain: switch
+    entity_id: switch.bf0d4aaa25d7bd1cb0jzfe
+    type: turn_on
+- id: '1592755927538'
+  alias: Geyser Evening switch On
+  description: ''
+  trigger:
+  - at: '16:00:00'
+    platform: time
+  condition: []
+  action:
+  - device_id: 22e4a29cbc7d46ac9020cf01cd50f809
+    domain: switch
+    entity_id: switch.bf0d4aaa25d7bd1cb0jzfe
+    type: turn_on
+- id: '1592820958179'
+  alias: Turn on washroom light when there is movement
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.study_motion_sensor
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - device_id: c01d564f9bc847bd97567386629cffbc
+    domain: switch
+    entity_id: switch.washroom_washroom
+    type: turn_on
+- id: '1592821083526'
+  alias: Turn off washroom light 10 minutes after last movement
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.study_motion_sensor
+    for: 0:10:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - device_id: c01d564f9bc847bd97567386629cffbc
+    domain: switch
+    entity_id: switch.washroom_washroom
+    type: turn_off
+- id: '1592823199350'
+  alias: Study Aircon 26 C On
+  description: ''
+  trigger:
+  - entity_id: input_boolean.study_ac26
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    service: script.script_ht_aircon_26c
+- id: '1592855141795'
+  alias: Marantz AV Cooler Off
+  description: ''
+  trigger:
+  - entity_id: media_player.sr6010
+    for: 00:01:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - device_id: 0649f712ef3940809232190c4c82310e
+    domain: switch
+    entity_id: switch.6010cooler_6010cooler
+    type: turn_off
+- id: '1592855545096'
+  alias: Marantz AV Cooler On
+  description: ''
+  trigger:
+  - entity_id: media_player.sr6010
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - device_id: 0649f712ef3940809232190c4c82310e
+    domain: switch
+    entity_id: switch.6010cooler_6010cooler
+    type: turn_on

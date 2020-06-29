@@ -1,0 +1,11 @@
+{
+    "domain": "lg_climate",
+    "name": "LG CLimate",
+    "documentation": "https://www.home-assistant.io/integrations/lg_climate",
+    "requirements": [],
+    "dependencies": [
+      "mqtt",
+      "sensor"
+    ],
+    "codeowners": ["@hristo-atanasov"]
+  }
