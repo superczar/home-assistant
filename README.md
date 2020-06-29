@@ -79,19 +79,18 @@ The network setup is slightly convoluted as my primary ISP uses CGNAT. The prima
 
 While my primary ISP is fairly reliable , they unfortunately use CGNAT. For external access, I have setup an Amazon Lightsail VPN that a linux box on the network openvpn connects to. Both the lightsail server and the linux system have appropriate port forwarding rules configured. if I access my lightsail server externally, all traffic is routed transparently to the right device on my home network
 
-1.
 ### Router
 
 Edgerouter X (ER-X) in load balancing mode
 
-1.
+
 ### Access Points
 
 Orbi RBR50, Orbi RBK 50, Orbi RBS20. The former 2 cover 1 floor each and the RBS20 covers the frontyard.
 
 My house gets frequent short brownouts and the Orbi system does not take handle power outage very well. They are all powered by 12V 7AH batteries charging with a constant float of 12.4V
 
-1.
+
 ### Switches
 
 A mix of multiple partially daisy-chained switches. The loadbalanced WAN from ER-X goes to the switch br0 on the RBR50 that then goes to 4 switches in different parts of the house (switch 3 and 4 are daisychained)
@@ -226,3 +225,4 @@ Was used extensively for [homekit](https://github.com/homebridge/homebridge) int
 ### Apcupsd
 
 Not really a bridge but the apcupsd integration on ha allows me to keep an eye on the UPS that powers the hypervisor plus allows a clean shutdown in case there is a long power failure
+
