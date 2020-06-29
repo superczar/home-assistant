@@ -35,6 +35,7 @@ All configuration available in config.yaml and other linked files
   * [Other bridges on the network](#other-bridges-on-the-network)
     + [HABRIDGE](#habridge)
     + [Homebridge](#homebridge)
+    + [APC UPS](#Apcupsd)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -151,6 +152,8 @@ Notes:
 
 ## Sensors
 
+<img src="./images/sensor1.jpg" width="150" />
+
 ### Temperature and Humidity
 
 1. DS18B20 – 3 units with a One wire link to Domoticz RPi GPIO. Integrated to HA with Rest calls to domoticz
@@ -206,7 +209,7 @@ As it&#39;s been only a few days of using influx, I have not yet got down to set
 
 Here is a sample grab from domoticz that shows how downsampling is handled on it.
 
-## Other bridges on the network
+## Other bridges/ Misc
 
 ### HABRIDGE
 
@@ -219,3 +222,7 @@ If you have not used habridge, I really recommend you do try it once.
 ### Homebridge
 
 Was used extensively for [homekit](https://github.com/homebridge/homebridge) integration over the last few years. I have for now disabled this as I play around with the native homekit integration on HA
+
+### Apcupsd
+
+Not really a bridge but the apcupsd integration on ha allows me to keep an eye on the UPS that powers the hypervisor plus allows a clean shutdown in case there is a long power failure
