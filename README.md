@@ -144,10 +144,10 @@ Notes:
 1. Denon X3500 – Shows up in HA with no fuss. Also used for driving the exhaust automation .
 2. Marantz SR6010 - Shows up in HA with no fuss. Also used for driving the exhaust automation . On a side note, the cooling automation is quite important for me as both the AVRs are housed in closets and the closet temperatures shoot up drastically if the exhaust fan is not activated (more details in sensors)
 3. DTS Play-fi – Not integrated into HA , need to figure this out
-  1. 2 X Klipsch Gate – Frontyard and Guest room speakers
-  2. 1 X Paradigm PW Link – Kitchen Speakers
-  3. 1X Paradign PW Amp – Bedroom Speakers
-  4. Homepods
+  a. 2 X Klipsch Gate – Frontyard and Guest room speakers
+  b. 1 X Paradigm PW Link – Kitchen Speakers
+  c. 1X Paradign PW Amp – Bedroom Speakers
+4. Homepods
 
 ## Sensors
 
@@ -186,7 +186,7 @@ Now I have ordered 2 more pairs to have 3 separate sensor reading for each phase
 1. Rear Door: Kwikset Z-wave lever lock – Integrated with Smartthings but not with HA. Should be easy but I cannot think of a use-case
 2. Main Door: Yale YDM7116 – This one is an oddball. The lock uses a BT module that is used for phones in proximity. Additionally, it uses a wifi-BT bridge called the yale link bridge that enables remote connectivity.
 
-Notes: The Kwikset Z\_wave is very flakey. It intermittently Lost connection with the ST hub – and worse, each time that happens, it results In its battery getting drained – presumably because it keeps searching for the hub. In addition, the lock hardware is quite flimsy. Cannot recommend this at all – Also the reason I purchased the Yale and moved this to the rear door.
+Notes: The Kwikset Z\_wave link is unreliable. It loses connection with the ST hub every few weeks– and worse, each time that happens, it results In its battery getting drained – presumably because it keeps searching for the hub. In addition, the lock hardware is quite flimsy. Cannot recommend this at all – Also the reason I purchased the Yale and moved this to the rear door.
 
 In contrast, the yale build quality is massively better and the connection is super reliable. Unfortunately there is no documentation available on the Yale link bridge, nor can I find much info on the interwebs either
 
@@ -208,6 +208,8 @@ As it&#39;s been only a few days of using influx, I have not yet got down to set
 
 Here is a sample grab from domoticz that shows how downsampling is handled on it.
 
+ <img src="./images/domo_downsample.jpg" width="800" />
+ 
 ## Other bridges/ Misc
 
 ### HABRIDGE
