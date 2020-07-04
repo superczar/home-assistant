@@ -221,7 +221,7 @@
   alias: Marantz AV Cooler Off
   description: ''
   trigger:
-  - entity_id: media_player.sr6010
+  - entity_id: media_player.home_theatre
     for: 00:01:00
     platform: state
     to: 'off'
@@ -235,7 +235,7 @@
   alias: Marantz AV Cooler On
   description: ''
   trigger:
-  - entity_id: media_player.sr6010
+  - entity_id: media_player.home_theatre
     platform: state
     to: 'on'
   condition: []
@@ -244,3 +244,95 @@
     domain: switch
     entity_id: switch.6010cooler_6010cooler
     type: turn_on
+
+
+- alias: 'Publish phase1 value'
+  trigger:
+    platform: state
+    entity_id: sensor.watts1_energy_power
+  action:
+    service: mqtt.publish
+    data_template:
+      payload: "{{trigger.to_state.state}}"
+      topic: hasend/power1
+
+- alias: 'Publish phase2 value'
+  trigger:
+    platform: state
+    entity_id: sensor.watts2_energy_power
+  action:
+    service: mqtt.publish
+    data_template:
+      payload: "{{trigger.to_state.state}}"
+      topic: hasend/power2
+
+
+- alias: 'Publish daily energy value'
+  trigger:
+    platform: state
+    entity_id: sensor.energy_daily_mqtt
+  action:
+    service: mqtt.publish
+    data_template:
+      payload: "{{trigger.to_state.state}}"
+      topic: hasend/energydly
+
+- alias: 'Publish monthly energy value'
+  trigger:
+    platform: state
+    entity_id: sensor.energy_monthly_mqtt
+  action:
+    service: mqtt.publish
+    data_template:
+      payload: "{{trigger.to_state.state}}"
+      topic: hasend/energymnthly
+
+- alias: 'Publish outdoor temp'
+  trigger:
+    platform: state
+    entity_id: sensor.watts1_ds18b20_temperature
+  action:
+    service: mqtt.publish
+    data_template:
+      payload: "{{trigger.to_state.state}}"
+      topic: hasend/tempodr
+
+- alias: 'Publish house temp'
+  trigger:
+    platform: state
+    entity_id: sensor.house_temperature
+  action:
+    service: mqtt.publish
+    data_template:
+      payload: "{{trigger.to_state.state}}"
+      topic: hasend/tempindr
+
+- alias: 'Publish bedroom temp'
+  trigger:
+    platform: state
+    entity_id: sensor.bedroom_temperature
+  action:
+    service: mqtt.publish
+    data_template:
+      payload: "{{trigger.to_state.state}}"
+      topic: hasend/tempbr
+
+- alias: 'Publish owm temp'
+  trigger:
+    platform: state
+    entity_id: sensor.owm_temperature
+  action:
+    service: mqtt.publish
+    data_template:
+      payload: "{{trigger.to_state.state}}"
+      topic: hasend/tempowm
+
+- alias: 'Publish owm conditions'
+  trigger:
+    platform: state
+    entity_id: sensor.owm_condition
+  action:
+    service: mqtt.publish
+    data_template:
+      payload: "{{trigger.to_state.state}}"
+      topic: hasend/conditionowm

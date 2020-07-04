@@ -22,10 +22,11 @@ frontend:
     sad:
       primary-color: blue
 
-weather:
-  - platform: openweathermap
-    api_key: **************      
 
+
+#################################################################
+## Logging
+#################################################################
 logger:
   default: critical
   logs:
@@ -37,23 +38,23 @@ logger:
 #################################################################
 ## Components
 #################################################################
+
+
+utility_meter:
+    daily_energy:
+      source: sensor.combined_energy_total
+      cycle: daily
+    
+    monthly_energy:
+      source: sensor.combined_energy_total
+      cycle: monthly
+      offset:
+        days: 20
+        
 yeelight:
   devices:
     192.168.5.23:
       name: porch_bulb
-
-media_player:
-  - platform: denonavr
-    host: 192.168.5.172
-    name: X3500
-    show_all_sources: true
-    timeout: 2
-
-  - platform: denonavr
-    host: 192.168.5.16
-    name: SR6010
-    show_all_sources: true
-    timeout: 2
 
 wemo:
   discovery: false
@@ -64,15 +65,59 @@ apcupsd:
     host: 192.168.5.12
     port: 3551
 
+weather:
+  - platform: openweathermap
+    api_key: c488bcccdef2b0a0749c12324e638b57
+
+
+#################################################################
+## DB Logging for sensors
+#################################################################    
 influxdb:
   host: 192.168.5.155
   include:
     entities:
-       - sensor.bedroom_temperature
-       - sensor.closet_temperature
-       - sensor.kitchen_temperature
-       - sensor.house_temperature
-       - sensor.phase_i_power
+    - sensor.barometric_pressure
+    - sensor.bedroom_temperature
+    - sensor.closet_temperature
+    - binary_sensor.front_door_ding
+    - binary_sensor.front_door_motion
+    - sensor.house_temperature
+    - sensor.kitchen_temperature
+    - sensor.ups_load
+    - sensor.watts1_energy_power
+    - sensor.watts1_energy_today
+    - sensor.watts1_energy_total
+    - sensor.watts1_energy_yesterday
+    - sensor.watts2_energy_power
+    - sensor.watts2_energy_today
+    - sensor.watts2_energy_total
+    - sensor.watts2_energy_yesterday
+    - sensor.watts1_ds18b20_temperature
+    - sensor.combined_energy_total
+  component_config_glob:
+    sensor.*humidity:
+      override_measurement: humidity
+    sensor.*temperature:
+      override_measurement: temperature
+    sensor.*pressure:
+      override_measurement: pressure
+    sensor.*power:
+      override_measurement: watts
+    sensor.*motion:
+      override_measurement: motion
+    sensor.*ding:
+      override_measurement: ring
+    sensor.*load:
+      override_measurement: percentage
+    sensor.*energy_total:
+      override_measurement: kWH
+    sensor.*energy_today:
+      override_measurement: kWH
+    sensor.*energy_yesterday:
+      override_measurement: kWH
+      
+      
 #################################################################
 ## Includes
 #################################################################
@@ -82,7 +127,9 @@ input_boolean: !include input_boolean.yaml
 switch: !include switch.yaml
 binary_sensor: !include binsensor.yaml
 
-#########Group############
+#################################################################
+## Groups
+#################################################################
 light:
   - platform: group
     name: Pendant

@@ -68,9 +68,8 @@
       state: 'off'
       supported_features: 55
     light.bookshelf:
-      brightness: 153
       friendly_name: Bookshelf
-      state: 'on'
+      state: unavailable
       supported_features: 41
     light.dining_room:
       effect_list:
@@ -107,7 +106,7 @@
       supported_features: 63
     light.kitchensol_kitchensol:
       brightness: 48
-      color_temp: 336
+      color_temp: 333
       effect: '0'
       effect_list:
       - '0'
@@ -135,7 +134,7 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Living Wall
+      friendly_name: Wall Lamp
       max_mireds: 400
       min_mireds: 111
       state: 'off'
@@ -230,9 +229,6 @@
       state: 'off'
       supported_features: 43
     switch.accent1_accent1:
-      friendly_name: Study Accent Light
-      state: 'off'
-    switch.kitchen_kitchen:
       friendly_name: Kitchen Lamp
       state: 'off'
     switch.pool_filter:

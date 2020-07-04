@@ -4,7 +4,7 @@
   value_template: '{{value_json.result[0].Temp}}'
   device_class: temperature
   unit_of_measurement: '°C'
-  
+
 
 - platform: rest
   name: House Temperature
@@ -12,21 +12,21 @@
   value_template: '{{value_json.result[0].Temp}}'
   device_class: temperature
   unit_of_measurement: '°C'
-  
+
 - platform: rest
   name: Kitchen Temperature
   resource: http://192.168.5.100:8080/json.htm?type=devices&rid=68
   value_template: '{{value_json.result[0].Temp}}'
   device_class: temperature
   unit_of_measurement: '°C'
-  
+
 - platform: rest
   name: Closet Temperature
   resource: http://192.168.5.100:8080/json.htm?type=devices&rid=101
   value_template: '{{value_json.result[0].Temp}}'
   device_class: temperature
   unit_of_measurement: '°C'
-  
+
 - platform: rest
   name: Barometric Pressure
   resource: http://192.168.5.100:8080/json.htm?type=devices&rid=68
@@ -34,16 +34,45 @@
   device_class: pressure
   unit_of_measurement: 'hPa'
 
-- platform: rest
-  name: Phase I Power
-  resource: http://192.168.5.100:8080/json.htm?type=devices&rid=772
-  value_template: '{{value_json.result[0].Usage.split()[0] | int }}'
-  device_class: Power
-  unit_of_measurement: 'W'
- 
 - platform: apcupsd
   resources:
       - linev
       - loadpct
       - bcharge
       - timeleft
+
+- platform: integration
+  source: sensor.watts1_energy_power
+  name: Energy phase1
+  unit_prefix: k
+  round: 2
+
+- platform: integration
+  source: sensor.watts2_energy_power
+  name: Energy phase2
+  unit_prefix: k
+  round: 2
+
+- platform: template
+  sensors:
+    combined_energy_total:
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.energy_phase1') | float + states('sensor.energy_phase2') | float }}"
+
+- platform: openweathermap
+  api_key: c488bcccdef2b0a0749c12324e638b57
+  monitored_conditions:
+   - weather
+   - temperature
+
+- platform: template
+  sensors:
+    energy_daily_mqtt:
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.daily_energy') | round(1) }}"
+
+- platform: template
+  sensors:
+    energy_monthly_mqtt:
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.monthly_energy') | round(1) }}"
