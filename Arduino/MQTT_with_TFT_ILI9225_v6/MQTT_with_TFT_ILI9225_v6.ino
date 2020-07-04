@@ -58,10 +58,10 @@ String input2 ="hasend/power2";
 
 EspMQTTClient client(
   "ORBI55",
-  "fluffytuba408",
+  "***",
   "192.168.5.64",  // MQTT Broker server ip
   "abhinav",   // Can be omitted if not needed
-  "ladakh",   // Can be omitted if not needed
+  "***",   // Can be omitted if not needed
   "ili",     // Client name that uniquely identify your device
   1883              // The MQTT port, default to 1883. this line can be omitted
 );
