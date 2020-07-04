@@ -3,47 +3,47 @@
   name: Study Camera
   still_image_url: http://192.168.5.249/ISAPI/Streaming/channels/501/picture
   username: admin
-  password: Tissot1@#
+  password: ***
   authentication: digest
   
 - platform: generic
   name: Front Camera
   still_image_url: http://192.168.5.249/ISAPI/Streaming/channels/101/picture
   username: admin
-  password: Tissot1@#
+  password: ***
   authentication: digest
   
 - platform: generic
   name: Rear Camera
   still_image_url: http://192.168.5.249/ISAPI/Streaming/channels/201/picture
   username: admin
-  password: Tissot1@#
+  password: ***
   authentication: digest
   
 - platform: generic
   name: Guest Camera
   still_image_url: http://192.168.5.249/ISAPI/Streaming/channels/301/picture
   username: admin
-  password: Tissot1@#
+  password: ***
   authentication: digest
   
 - platform: generic
   name: Bedroom Camera
   still_image_url: http://192.168.5.249/ISAPI/Streaming/channels/401/picture
   username: admin
-  password: Tissot1@#
+  password: ***
   authentication: digest
   
 - platform: generic
   name: Dining Camera
   still_image_url: http://192.168.5.249/ISAPI/ContentMgmt/StreamingProxy/channels/701/picture
   username: admin
-  password: Tissot1@#
+  password: ***
   authentication: digest
   
 - platform: generic
   name: Porch Camera
   still_image_url: http://192.168.5.249/ISAPI/ContentMgmt/StreamingProxy/channels/801/picture
   username: admin
-  password: Tissot1@#
+  password: ***
   authentication: digest
