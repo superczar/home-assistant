@@ -67,10 +67,10 @@ apcupsd:
 
 weather:
   - platform: openweathermap
-    api_key: c488bcccdef2b0a0749c12324e638b57
+    api_key: xxx
 
 emoncms_history:
-  api_key: 278d467f3140f10fb6004a49502c01f1
+  api_key: xxx
   url: http://192.168.5.178/emoncms
   inputnode: 1
   whitelist:
