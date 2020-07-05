@@ -44,13 +44,13 @@ utility_meter:
     daily_energy:
       source: sensor.combined_energy_total
       cycle: daily
-    
+
     monthly_energy:
       source: sensor.combined_energy_total
       cycle: monthly
       offset:
         days: 20
-        
+
 yeelight:
   devices:
     192.168.5.23:
@@ -69,10 +69,28 @@ weather:
   - platform: openweathermap
     api_key: c488bcccdef2b0a0749c12324e638b57
 
+emoncms_history:
+  api_key: 278d467f3140f10fb6004a49502c01f1
+  url: http://192.168.5.178/emoncms
+  inputnode: 1
+  whitelist:
+    - sensor.combined_energy_total
+    - sensor.watts1_energy_power
+    - sensor.watts2_energy_power
+    - sensor.bedroom_temperature
+    - sensor.closet_temperature
+    - sensor.kitchen_temperature
+    - sensor.house_temperature
+    - sensor.watts1_ds18b20_temperature
+    - sensor.barometric_pressure
+    - sensor.watts1_energy_frequency
+    - sensor.watts1_energy_voltage
+    - sensor.watts2_energy_frequency
+    - sensor.watts2_energy_voltage
 
 #################################################################
 ## DB Logging for sensors
-#################################################################    
+#################################################################
 influxdb:
   host: 192.168.5.155
   include:
@@ -116,8 +134,8 @@ influxdb:
       override_measurement: kWH
     sensor.*energy_yesterday:
       override_measurement: kWH
-      
-      
+
+
 #################################################################
 ## Includes
 #################################################################
@@ -126,7 +144,10 @@ sensor: !include sensors.yaml
 input_boolean: !include input_boolean.yaml
 switch: !include switch.yaml
 binary_sensor: !include binsensor.yaml
-
+logbook:
+  exclude:
+    entity_globs:
+      - automation.publish*
 #################################################################
 ## Groups
 #################################################################

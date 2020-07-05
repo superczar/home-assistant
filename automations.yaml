@@ -2,7 +2,7 @@
   alias: ht_devices_on
   description: Living Room TV audio on
   trigger:
-  - entity_id: media_player.x3500
+  - entity_id: media_player.denon
     from: 'off'
     platform: state
     to: 'on'
@@ -17,7 +17,7 @@
   alias: ht_livingroom_devices_off
   description: ''
   trigger:
-  - entity_id: media_player.x3500
+  - entity_id: media_player.denon
     from: 'on'
     platform: state
     to: 'off'
@@ -183,6 +183,8 @@
   description: ''
   trigger:
   - entity_id: binary_sensor.study_motion_sensor
+    for: 00:00:02
+    from: 'off'
     platform: state
     to: 'on'
   condition: []
@@ -196,7 +198,7 @@
   description: ''
   trigger:
   - entity_id: binary_sensor.study_motion_sensor
-    for: 0:10:00
+    for: 0:05:00
     platform: state
     to: 'off'
   condition: []
@@ -244,95 +246,84 @@
     domain: switch
     entity_id: switch.6010cooler_6010cooler
     type: turn_on
-
-
-- alias: 'Publish phase1 value'
+- alias: Publish phase1 value
   trigger:
     platform: state
     entity_id: sensor.watts1_energy_power
   action:
     service: mqtt.publish
     data_template:
-      payload: "{{trigger.to_state.state}}"
+      payload: '{{trigger.to_state.state}}'
       topic: hasend/power1
-
-- alias: 'Publish phase2 value'
+- alias: Publish phase2 value
   trigger:
     platform: state
     entity_id: sensor.watts2_energy_power
   action:
     service: mqtt.publish
     data_template:
-      payload: "{{trigger.to_state.state}}"
+      payload: '{{trigger.to_state.state}}'
       topic: hasend/power2
-
-
-- alias: 'Publish daily energy value'
+- alias: Publish daily energy value
   trigger:
     platform: state
     entity_id: sensor.energy_daily_mqtt
   action:
     service: mqtt.publish
     data_template:
-      payload: "{{trigger.to_state.state}}"
+      payload: '{{trigger.to_state.state}}'
       topic: hasend/energydly
-
-- alias: 'Publish monthly energy value'
+- alias: Publish monthly energy value
   trigger:
     platform: state
     entity_id: sensor.energy_monthly_mqtt
   action:
     service: mqtt.publish
     data_template:
-      payload: "{{trigger.to_state.state}}"
+      payload: '{{trigger.to_state.state}}'
       topic: hasend/energymnthly
-
-- alias: 'Publish outdoor temp'
+- alias: Publish outdoor temp
   trigger:
     platform: state
     entity_id: sensor.watts1_ds18b20_temperature
   action:
     service: mqtt.publish
     data_template:
-      payload: "{{trigger.to_state.state}}"
+      payload: '{{trigger.to_state.state}}'
       topic: hasend/tempodr
-
-- alias: 'Publish house temp'
+- alias: Publish house temp
   trigger:
     platform: state
     entity_id: sensor.house_temperature
   action:
     service: mqtt.publish
     data_template:
-      payload: "{{trigger.to_state.state}}"
+      payload: '{{trigger.to_state.state}}'
       topic: hasend/tempindr
-
-- alias: 'Publish bedroom temp'
+- alias: Publish bedroom temp
   trigger:
     platform: state
     entity_id: sensor.bedroom_temperature
   action:
     service: mqtt.publish
     data_template:
-      payload: "{{trigger.to_state.state}}"
+      payload: '{{trigger.to_state.state}}'
       topic: hasend/tempbr
-
-- alias: 'Publish owm temp'
+- alias: Publish owm temp
   trigger:
     platform: state
     entity_id: sensor.owm_temperature
   action:
     service: mqtt.publish
     data_template:
-      payload: "{{trigger.to_state.state}}"
+      payload: '{{trigger.to_state.state}}'
       topic: hasend/tempowm
-
-- alias: 'Publish owm conditions'
+- alias: Publish owm conditions
   trigger:
     platform: state
     entity_id: sensor.owm_condition
   action:
     service: mqtt.publish
     data_template:
-      payload: "{{trigger.to_state.state}}"
+      payload: '{{trigger.to_state.state}}'
       topic: hasend/conditionowm
