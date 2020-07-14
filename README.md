@@ -8,6 +8,7 @@ The long term plan is to have HA do all of the heavy lifting but to keep domotic
 19th June – First Install
 All configuration available in config.yaml and other files
 
+14th July - All done (hopefully!)
 
 - [Home Assistant](#home-assistant)
 - [Background](#background)
@@ -173,6 +174,7 @@ Notes : I have a 3 phase supply and the older SCT013 used a CT sensor on the neu
 My plan was to wire the PZEM004T in the same way but realized that the readings were off because the PZEM004T power factor calculation would be off due to the phase difference .
 
 Now I have ordered 2 more pairs to have 3 separate sensor reading for each phase that can be combined later on in Grafana
+Edit: This is done now. Readings are very precise , the kWH aggregation (using the Riemann Integral function on HA ) is within +/- 0.5%  of the utility meter readings
 
 ## Remote Control
 
@@ -210,6 +212,8 @@ Here is a sample grab from domoticz that shows how downsampling is handled on it
 
  <img src="./images/domo_downsample.jpg" width="800" />
  
+ Edit: 10th July: Setup a local emoncms instance for long term logging. Grafana is nice but a little too difficult/ complex for me. I will leave grafana running for now but emoncms is a lot easier to setup and use 
+ 
 ## Other bridges/ Misc
 
 ### HABRIDGE
@@ -220,9 +224,13 @@ Setup and installation is trivial on any linux box. Configuring it for domoticz 
 
 If you have not used habridge, I really recommend you do try it once.
 
+Edit: 10th July - HA has a native hue emulator .. Moved Alexa integration to the native component. Works as well although I still think habridge is easier to configure and use
+
 ### Homebridge
 
 Was used extensively for [homekit](https://github.com/homebridge/homebridge) integration over the last few years. I have for now disabled this as I play around with the native homekit integration on HA
+
+Edit: Native homekit integration on HA is very reliable. Retired homebridge and using the native homekit now
 
 ### Apcupsd
 
