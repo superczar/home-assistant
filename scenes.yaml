@@ -1,75 +1,16 @@
-- id: '1592493690134'
-  name: New Scene
-  entities:
-    light.living_wall_2:
-      brightness: 255
-      color_temp: 237
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Living Wall 2
-      max_mireds: 400
-      min_mireds: 111
-      state: 'on'
-      supported_features: 55
-    light.pendant:
-      brightness: 255
-      color_temp: 358
-      effect: none
-      effect_list:
-      - colorloop
-      - random
-      friendly_name: Pendant
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
-      supported_features: 63
-    light.pendant_up:
-      brightness: 255
-      effect: none
-      effect_list:
-      - colorloop
-      - random
-      friendly_name: Pendant Up
-      hs_color:
-      - 20.088
-      - 89.02
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 103
-      - 27
-      state: 'on'
-      supported_features: 63
-      xy_color:
-      - 0.635
-      - 0.346
-    light.stairs:
-      brightness: 255
-      color_temp: 327
-      friendly_name: Stairs
-      max_mireds: 454
-      min_mireds: 153
-      state: 'on'
-      supported_features: 43
 - id: '1592595210697'
-  name: Sleep time
+  name: Lights Step 0
   entities:
-    light.bedroom_bulb:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
+    light.bedroom_bulb_2:
       friendly_name: Bedroom Bulb
-      max_mireds: 400
-      min_mireds: 111
+      max_mireds: 500
+      min_mireds: 152.998779296875
       state: 'off'
-      supported_features: 55
+      supported_features: 43
     light.bookshelf:
+      brightness: 155
       friendly_name: Bookshelf
-      state: unavailable
+      state: 'on'
       supported_features: 41
     light.dining_room:
       effect_list:
@@ -104,45 +45,46 @@
       min_mireds: 153
       state: 'off'
       supported_features: 63
-    light.kitchensol_kitchensol:
-      brightness: 48
-      color_temp: 333
-      effect: '0'
-      effect_list:
-      - '0'
-      - '1'
-      - '2'
-      - '3'
-      - '4'
-      friendly_name: Kitchen Bulb
-      hs_color:
-      - 0
-      - 0
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 255
-      - 255
-      state: 'on'
-      supported_features: 23
-      xy_color:
-      - 0.323
-      - 0.329
-    light.living_wall_2:
+    light.kitchen_bulb:
+      brightness: 9
+      color_temp: 222
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Wall Lamp
+      friendly_name: Kitchen Bulb
       max_mireds: 400
       min_mireds: 111
-      state: 'off'
+      state: 'on'
       supported_features: 55
+    light.landing_light:
+      friendly_name: Study Bulb
+      max_mireds: 454
+      min_mireds: 153
+      state: 'off'
+      supported_features: 43
+    light.living_wall_lamps:
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      - effect_colorloop
+      entity_id:
+      - light.living_wall_1
+      - light.living_wall_2_2
+      - light.living_wall_3
+      friendly_name: Living Wall Lamps
+      max_mireds: 500
+      min_mireds: 111
+      state: 'off'
+      supported_features: 63
     light.pendant:
       effect_list:
       - random
       - colorloop
+      entity_id:
+      - light.hue_beyond_down_1
+      - light.hue_beyond_down_2
+      - light.hue_beyond_down_3
       friendly_name: Pendant
       max_mireds: 500
       min_mireds: 153
@@ -158,7 +100,7 @@
       state: 'off'
       supported_features: 63
     light.porch_bulb:
-      brightness: 54
+      brightness: 26
       color_temp: 250
       effect_list:
       - Strobe color
@@ -181,19 +123,19 @@
       flowing: false
       friendly_name: porch_bulb
       hs_color:
-      - 26
-      - 35.294
+      - 27.059
+      - 40
       max_mireds: 588
       min_mireds: 153
       rgb_color:
       - 255
-      - 204
-      - 165
+      - 199
+      - 153
       state: 'on'
       supported_features: 63
       xy_color:
-      - 0.422
-      - 0.364
+      - 0.437
+      - 0.37
     light.stairs:
       brightness: 36
       color_temp: 327
@@ -202,17 +144,6 @@
       min_mireds: 153
       state: 'on'
       supported_features: 43
-    light.study_bulb:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Study Bulb
-      max_mireds: 400
-      min_mireds: 111
-      restored: true
-      state: unavailable
-      supported_features: 55
     light.study_lamp:
       effect_list:
       - effect_pulse
@@ -228,31 +159,38 @@
       min_mireds: 153
       state: 'off'
       supported_features: 43
-    switch.accent1_accent1:
-      friendly_name: Kitchen Lamp
+    switch.balcony_lamp:
+      friendly_name: Balcony Lamp
+      icon: ''
+      state: 'off'
+    switch.guest_tubelight:
+      friendly_name: Guest Tubelight
+      icon: ''
       state: 'off'
     switch.pool_filter:
       friendly_name: Garden Lamp
       state: 'off'
-    switch.tasmota_tasmota:
-      friendly_name: Balcony
-      state: 'off'
-    switch.tasmota_tasmota_2:
+    switch.porch_lamp:
       friendly_name: Porch Lamp
+      icon: ''
+      state: 'off'
+    switch.study_led_strip:
+      friendly_name: Study LED Strip
+      icon: ''
+      state: 'on'
+    switch.terrace_lamp:
+      friendly_name: Terrace Lamp
+      icon: ''
       state: 'off'
 - id: '1592599783252'
-  name: Daylight
+  name: Lights - Step Off
   entities:
-    light.bedroom_bulb:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
+    light.bedroom_bulb_2:
       friendly_name: Bedroom Bulb
-      max_mireds: 400
-      min_mireds: 111
+      max_mireds: 500
+      min_mireds: 152.998779296875
       state: 'off'
-      supported_features: 55
+      supported_features: 43
     light.bookshelf:
       friendly_name: Bookshelf
       state: 'off'
@@ -267,19 +205,18 @@
       min_mireds: 111
       state: 'off'
       supported_features: 55
-    light.floor_lamp_1:
+    light.floorlamp:
       effect_list:
-      - colorloop
       - random
-      friendly_name: Floor lamp 1
+      - colorloop
+      entity_id:
+      - light.floor_lamp_1
+      - light.floor_lamp_2
+      friendly_name: FloorLamp
       max_mireds: 500
       min_mireds: 153
       state: 'off'
       supported_features: 63
-    light.floor_lamp_2:
-      friendly_name: Floor Lamp 2
-      state: 'off'
-      supported_features: 41
     light.guest_room_bulb:
       effect_list:
       - colorloop
@@ -289,38 +226,44 @@
       min_mireds: 153
       state: 'off'
       supported_features: 63
-    light.kitchensol_kitchensol:
-      effect_list:
-      - '0'
-      - '1'
-      - '2'
-      - '3'
-      - '4'
-      friendly_name: Kitchen Bulb
-      max_mireds: 500
-      min_mireds: 153
-      state: 'off'
-      supported_features: 23
-    light.landing_light:
-      friendly_name: Landing light
-      max_mireds: 454
-      min_mireds: 153
-      state: unavailable
-      supported_features: 43
-    light.living_wall_2:
+    light.kitchen_bulb:
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Living Wall 2
+      friendly_name: Kitchen Bulb
       max_mireds: 400
       min_mireds: 111
       state: 'off'
       supported_features: 55
+    light.landing_light:
+      friendly_name: Study Bulb
+      max_mireds: 454
+      min_mireds: 153
+      state: 'off'
+      supported_features: 43
+    light.living_wall_lamps:
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      - effect_colorloop
+      entity_id:
+      - light.living_wall_1
+      - light.living_wall_2_2
+      - light.living_wall_3
+      friendly_name: Living Wall Lamps
+      max_mireds: 500
+      min_mireds: 111
+      state: 'off'
+      supported_features: 63
     light.pendant:
       effect_list:
       - random
       - colorloop
+      entity_id:
+      - light.hue_beyond_down_1
+      - light.hue_beyond_down_2
+      - light.hue_beyond_down_3
       friendly_name: Pendant
       max_mireds: 500
       min_mireds: 153
@@ -335,48 +278,12 @@
       min_mireds: 153
       state: 'off'
       supported_features: 63
-    light.porch_bulb:
-      effect_list:
-      - Strobe color
-      - Police
-      - Christmas
-      - RGB
-      - Random Loop
-      - Fast Random Loop
-      - LSD
-      - Slowdown
-      - Disco
-      - Strobe epilepsy!
-      - Alarm
-      - Police2
-      - WhatsApp
-      - Facebook
-      - Twitter
-      - Slow Temp
-      - Stop
-      flowing: false
-      friendly_name: porch_bulb
-      max_mireds: 588
-      min_mireds: 153
-      state: 'off'
-      supported_features: 63
     light.stairs:
       friendly_name: Stairs
       max_mireds: 454
       min_mireds: 153
       state: 'off'
       supported_features: 43
-    light.study_bulb:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Study Bulb
-      max_mireds: 400
-      min_mireds: 111
-      restored: true
-      state: unavailable
-      supported_features: 55
     light.study_lamp:
       effect_list:
       - effect_pulse
@@ -392,20 +299,28 @@
       min_mireds: 153
       state: 'off'
       supported_features: 43
-    switch.accent1_accent1:
-      friendly_name: Study Accent Light
+    switch.balcony_lamp:
+      friendly_name: Balcony Lamp
+      icon: ''
       state: 'off'
-    switch.kitchen_kitchen:
-      friendly_name: Kitchen Lamp
-      state: 'on'
+    switch.guest_tubelight:
+      friendly_name: Guest Tubelight
+      icon: ''
+      state: 'off'
     switch.pool_filter:
       friendly_name: Garden Lamp
       state: 'off'
-    switch.tasmota_tasmota:
-      friendly_name: Balcony
-      state: 'off'
-    switch.tasmota_tasmota_2:
+    switch.porch_lamp:
       friendly_name: Porch Lamp
+      icon: ''
+      state: 'off'
+    switch.study_led_strip:
+      friendly_name: Study LED Strip
+      icon: ''
+      state: 'off'
+    switch.terrace_lamp:
+      friendly_name: Terrace Lamp
+      icon: ''
       state: 'off'
 - id: '1592663086861'
   name: Evening Lights
@@ -456,6 +371,31 @@
       min_mireds: 153
       state: 'on'
       supported_features: 63
+    light.kitchensol_kitchensol:
+      brightness: 255
+      color_temp: 320
+      effect: '0'
+      effect_list:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      friendly_name: Kitchen Bulb
+      hs_color:
+      - 0
+      - 0
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 255
+      - 255
+      state: 'on'
+      supported_features: 23
+      xy_color:
+      - 0.323
+      - 0.329
     light.living_wall_2:
       brightness: 255
       color_temp: 251
@@ -463,7 +403,7 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Living Wall
+      friendly_name: Wall Lamp
       max_mireds: 400
       min_mireds: 111
       state: 'on'
@@ -475,6 +415,10 @@
       effect_list:
       - random
       - colorloop
+      entity_id:
+      - light.hue_beyond_down_1
+      - light.hue_beyond_down_2
+      - light.hue_beyond_down_3
       friendly_name: Pendant
       max_mireds: 500
       min_mireds: 153
@@ -488,22 +432,22 @@
       - random
       friendly_name: Pendant Up
       hs_color:
-      - 3.438
-      - 75.294
+      - 3.529
+      - 73.333
       max_mireds: 500
       min_mireds: 153
       rgb_color:
       - 255
-      - 74
-      - 63
+      - 78
+      - 68
       state: 'on'
       supported_features: 63
       xy_color:
-      - 0.639
+      - 0.631
       - 0.311
     light.porch_bulb:
       brightness: 255
-      color_temp: 372
+      color_temp: 250
       effect_list:
       - Strobe color
       - Police
@@ -565,42 +509,13 @@
       min_mireds: 153
       state: 'on'
       supported_features: 43
-    light.tasmota_tuya_bulb1:
-      brightness: 255
-      color_temp: 328
-      effect: '0'
-      effect_list:
-      - '0'
-      - '1'
-      - '2'
-      - '3'
-      - '4'
-      friendly_name: Kitchen Bulb
-      hs_color:
-      - 0
-      - 0
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 255
-      - 255
-      state: 'on'
-      supported_features: 23
-      xy_color:
-      - 0.323
-      - 0.329
-    switch.accent1_accent1:
-      friendly_name: Study Accent Light
-      state: 'on'
-    switch.guesttube_guesttube:
-      friendly_name: Guest Tubelight
-      state: 'on'
-    switch.kitchen_kitchen:
+    switch.kitchen_lamp:
       friendly_name: Kitchen Lamp
+      icon: ''
       state: 'on'
-    switch.tasmota_tasmota_2:
+    switch.porch_lamp:
       friendly_name: Porch Lamp
+      icon: ''
       state: 'on'
 - id: '1592745768612'
   name: Pre Dusk
@@ -750,4 +665,750 @@
       supported_features: 43
     switch.kitchen_kitchen:
       friendly_name: Kitchen Lamp
+      state: 'on'
+- id: '1594474380356'
+  name: Lights Step 2
+  entities:
+    light.bookshelf:
+      brightness: 255
+      friendly_name: Bookshelf
+      state: 'on'
+      supported_features: 41
+    light.floorlamp:
+      brightness: 116
+      color_temp: 312
+      effect: none
+      effect_list:
+      - random
+      - colorloop
+      entity_id:
+      - light.floor_lamp_1
+      - light.floor_lamp_2
+      friendly_name: FloorLamp
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.guest_room_bulb:
+      brightness: 210
+      color_temp: 283
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Guest Room bulb
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.living_wall_1:
+      brightness: 160
+      color_temp: 324
+      friendly_name: Living Wall 1
+      max_mireds: 500
+      min_mireds: 152.998779296875
+      state: 'on'
+      supported_features: 43
+    light.living_wall_2_2:
+      brightness: 160
+      color_temp: 324
+      friendly_name: Living Wall 2
+      max_mireds: 500
+      min_mireds: 152.998779296875
+      state: 'on'
+      supported_features: 43
+    light.living_wall_3:
+      brightness: 160
+      color_temp: 247
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Living Wall 3
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.stairs:
+      brightness: 118
+      color_temp: 298
+      friendly_name: Stairs
+      max_mireds: 454
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+- id: '1594552966242'
+  name: Lights Step 1
+  entities:
+    light.guest_room_bulb:
+      brightness: 166
+      color_temp: 312
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Guest Room bulb
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.living_wall_lamps:
+      brightness: 139
+      color_temp: 278
+      effect_list:
+      - effect_colorloop
+      - effect_stop
+      - effect_pulse
+      entity_id:
+      - light.living_wall_1
+      - light.living_wall_2_2
+      - light.living_wall_3
+      friendly_name: Living Wall Lamps
+      hs_color:
+      - 194.994
+      - 0.055
+      max_mireds: 500
+      min_mireds: 111
+      rgb_color:
+      - 254
+      - 254
+      - 255
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.322
+      - 0.328
+- id: '1594553269460'
+  name: Lights Step 3
+  entities:
+    light.bookshelf:
+      brightness: 255
+      friendly_name: Bookshelf
+      state: 'on'
+      supported_features: 41
+    light.dining_room:
+      brightness: 181
+      color_temp: 242
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Dining Room
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.guest_room_bulb:
+      brightness: 255
+      color_temp: 283
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Guest Room bulb
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.kitchen_bulb:
+      brightness: 255
+      color_temp: 222
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Kitchen Bulb
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.living_wall_lamps:
+      brightness: 217
+      color_temp: 324
+      effect_list:
+      - effect_stop
+      - effect_pulse
+      - effect_colorloop
+      entity_id:
+      - light.living_wall_1
+      - light.living_wall_2_2
+      - light.living_wall_3
+      friendly_name: Living Wall Lamps
+      hs_color:
+      - 194.994
+      - 0.053
+      max_mireds: 500
+      min_mireds: 111
+      rgb_color:
+      - 254
+      - 254
+      - 255
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.322
+      - 0.328
+    light.pendant:
+      brightness: 112
+      color_temp: 319
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      entity_id:
+      - light.hue_beyond_down_1
+      - light.hue_beyond_down_2
+      - light.hue_beyond_down_3
+      friendly_name: Pendant
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.pendant_up:
+      brightness: 255
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Pendant Up
+      hs_color:
+      - 19.364
+      - 86.275
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 106
+      - 34
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.629
+      - 0.347
+    light.stairs:
+      brightness: 255
+      color_temp: 298
+      friendly_name: Stairs
+      max_mireds: 454
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+    light.study_lamp:
+      brightness: 255
+      color_temp: 285
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      friendly_name: Study Lamp
+      max_mireds: 370
+      min_mireds: 153
+      state: 'on'
+      supported_features: 39
+    light.table_lamp:
+      brightness: 255
+      color_temp: 298
+      friendly_name: Table lamp
+      max_mireds: 454
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+    switch.study_led_strip:
+      friendly_name: Study LED Strip
+      icon: ''
+      state: 'on'
+- id: '1594553475961'
+  name: Lights Step 4
+  entities:
+    light.bookshelf:
+      brightness: 255
+      friendly_name: Bookshelf
+      state: 'on'
+      supported_features: 41
+    light.dining_room:
+      brightness: 255
+      color_temp: 242
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Dining Room
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.guest_room_bulb:
+      brightness: 255
+      color_temp: 283
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Guest Room bulb
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.kitchen_bulb:
+      brightness: 255
+      color_temp: 222
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Kitchen Bulb
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.living_wall_lamps:
+      brightness: 232
+      color_temp: 324
+      effect_list:
+      - effect_stop
+      - effect_pulse
+      - effect_colorloop
+      entity_id:
+      - light.living_wall_1
+      - light.living_wall_2_2
+      - light.living_wall_3
+      friendly_name: Living Wall Lamps
+      hs_color:
+      - 194.994
+      - 0.053
+      max_mireds: 500
+      min_mireds: 111
+      rgb_color:
+      - 254
+      - 254
+      - 255
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.322
+      - 0.328
+    light.pendant:
+      brightness: 255
+      color_temp: 319
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      entity_id:
+      - light.hue_beyond_down_1
+      - light.hue_beyond_down_2
+      - light.hue_beyond_down_3
+      friendly_name: Pendant
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.pendant_up:
+      brightness: 255
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Pendant Up
+      hs_color:
+      - 250.61
+      - 64.314
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 120
+      - 90
+      - 255
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.207
+      - 0.116
+    light.stairs:
+      brightness: 255
+      color_temp: 298
+      friendly_name: Stairs
+      max_mireds: 454
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+    light.study_lamp:
+      brightness: 255
+      color_temp: 285
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      friendly_name: Study Lamp
+      max_mireds: 370
+      min_mireds: 153
+      state: 'on'
+      supported_features: 39
+    light.table_lamp:
+      brightness: 255
+      color_temp: 298
+      friendly_name: Table lamp
+      max_mireds: 454
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+    switch.guest_tubelight:
+      friendly_name: Guest Tubelight
+      icon: ''
+      state: 'on'
+    switch.study_led_strip:
+      friendly_name: Study LED Strip
+      icon: ''
+      state: 'on'
+- id: '1594553698140'
+  name: Lights Step 5
+  entities:
+    light.bookshelf:
+      brightness: 255
+      friendly_name: Bookshelf
+      state: 'on'
+      supported_features: 41
+    light.dining_room:
+      brightness: 255
+      color_temp: 242
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Dining Room
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.guest_room_bulb:
+      brightness: 255
+      color_temp: 283
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Guest Room bulb
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.kitchen_bulb:
+      brightness: 255
+      color_temp: 222
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Kitchen Bulb
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.living_wall_lamps:
+      brightness: 229
+      color_temp: 324
+      effect_list:
+      - effect_stop
+      - effect_pulse
+      - effect_colorloop
+      entity_id:
+      - light.living_wall_1
+      - light.living_wall_2_2
+      - light.living_wall_3
+      friendly_name: Living Wall Lamps
+      hs_color:
+      - 194.994
+      - 0.049
+      max_mireds: 500
+      min_mireds: 111
+      rgb_color:
+      - 254
+      - 254
+      - 255
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.322
+      - 0.328
+    light.pendant:
+      brightness: 255
+      color_temp: 319
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      entity_id:
+      - light.hue_beyond_down_1
+      - light.hue_beyond_down_2
+      - light.hue_beyond_down_3
+      friendly_name: Pendant
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.pendant_up:
+      brightness: 255
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Pendant Up
+      hs_color:
+      - 251.465
+      - 61.569
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 127
+      - 97
+      - 255
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.214
+      - 0.125
+    light.porch_bulb:
+      brightness: 120
+      color_temp: 267
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Slow Temp
+      - Stop
+      flowing: false
+      friendly_name: porch_bulb
+      hs_color:
+      - 44.384
+      - 28.627
+      max_mireds: 588
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 236
+      - 182
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.385
+      - 0.384
+    light.stairs:
+      brightness: 255
+      color_temp: 298
+      friendly_name: Stairs
+      max_mireds: 454
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+    light.study_lamp:
+      brightness: 255
+      color_temp: 285
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      friendly_name: Study Lamp
+      max_mireds: 370
+      min_mireds: 153
+      state: 'on'
+      supported_features: 39
+    light.table_lamp:
+      brightness: 255
+      color_temp: 298
+      friendly_name: Table lamp
+      max_mireds: 454
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+    switch.guest_tubelight:
+      friendly_name: Guest Tubelight
+      icon: ''
+      state: 'on'
+    switch.kitchen_lamp:
+      friendly_name: Kitchen Lamp
+      icon: ''
+      state: 'on'
+    switch.study_led_strip:
+      friendly_name: Study LED Strip
+      icon: ''
+      state: 'on'
+- id: '1594553869300'
+  name: Lights Step 6
+  entities:
+    light.bookshelf:
+      brightness: 255
+      friendly_name: Bookshelf
+      state: 'on'
+      supported_features: 41
+    light.dining_room:
+      brightness: 255
+      color_temp: 242
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Dining Room
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.guest_room_bulb:
+      brightness: 255
+      color_temp: 283
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Guest Room bulb
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+    light.kitchen_bulb:
+      brightness: 255
+      color_temp: 222
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Kitchen Bulb
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.living_wall_lamps:
+      brightness: 229
+      color_temp: 324
+      effect_list:
+      - effect_stop
+      - effect_pulse
+      - effect_colorloop
+      entity_id:
+      - light.living_wall_1
+      - light.living_wall_2_2
+      - light.living_wall_3
+      friendly_name: Living Wall Lamps
+      hs_color:
+      - 194.994
+      - 0.049
+      max_mireds: 500
+      min_mireds: 111
+      rgb_color:
+      - 254
+      - 254
+      - 255
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.322
+      - 0.328
+    light.pendant_up:
+      brightness: 255
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Pendant Up
+      hs_color:
+      - 251.083
+      - 61.569
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 126
+      - 97
+      - 255
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.213
+      - 0.124
+    light.porch_bulb:
+      brightness: 245
+      color_temp: 267
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Slow Temp
+      - Stop
+      flowing: false
+      friendly_name: porch_bulb
+      hs_color:
+      - 44.384
+      - 28.627
+      max_mireds: 588
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 236
+      - 182
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.385
+      - 0.384
+    light.stairs:
+      brightness: 255
+      color_temp: 298
+      friendly_name: Stairs
+      max_mireds: 454
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+    light.study_lamp:
+      brightness: 255
+      color_temp: 285
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      friendly_name: Study Lamp
+      max_mireds: 370
+      min_mireds: 153
+      state: 'on'
+      supported_features: 39
+    light.table_lamp:
+      brightness: 255
+      color_temp: 298
+      friendly_name: Table lamp
+      max_mireds: 454
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+    switch.guest_tubelight:
+      friendly_name: Guest Tubelight
+      icon: ''
+      state: 'on'
+    switch.kitchen_lamp:
+      friendly_name: Kitchen Lamp
+      icon: ''
+      state: 'on'
+    switch.porch_lamp:
+      friendly_name: Porch Lamp
+      icon: ''
+      state: 'on'
+    switch.study_led_strip:
+      friendly_name: Study LED Strip
+      icon: ''
       state: 'on'

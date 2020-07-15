@@ -8,11 +8,15 @@
     to: 'on'
   condition: []
   action:
-  - device_id: cb8e58a23df0422fbd3182f6f1a01520
+  - device_id: af809ee689ad47e4862ffde527d279ec
     domain: switch
-    entity_id: switch.sonoff_sonoff
+    entity_id: switch.pm17_power
     type: turn_on
   - service: script.script_polk
+  - device_id: 310ec57a775a448f84525504430a212e
+    domain: switch
+    entity_id: switch.denon_fan
+    type: turn_on
 - id: '1592569583792'
   alias: ht_livingroom_devices_off
   description: ''
@@ -23,9 +27,9 @@
     to: 'off'
   condition: []
   action:
-  - device_id: cb8e58a23df0422fbd3182f6f1a01520
+  - device_id: af809ee689ad47e4862ffde527d279ec
     domain: switch
-    entity_id: switch.sonoff_sonoff
+    entity_id: switch.pm17_power
     type: turn_off
   - data: {}
     service: script.script_polk
@@ -182,30 +186,29 @@
   alias: Turn on washroom light when there is movement
   description: ''
   trigger:
-  - entity_id: binary_sensor.study_motion_sensor
-    for: 00:00:02
+  - entity_id: binary_sensor.study_motion_sensor_2
     from: 'off'
     platform: state
     to: 'on'
   condition: []
   action:
-  - device_id: c01d564f9bc847bd97567386629cffbc
+  - device_id: 1609cdb452454b359a8bec57a4e80499
     domain: switch
-    entity_id: switch.washroom_washroom
+    entity_id: switch.study_washroom_exhaust
     type: turn_on
 - id: '1592821083526'
   alias: Turn off washroom light 10 minutes after last movement
   description: ''
   trigger:
-  - entity_id: binary_sensor.study_motion_sensor
-    for: 0:05:00
+  - entity_id: binary_sensor.study_motion_sensor_2
+    for: 00:10:00
     platform: state
     to: 'off'
   condition: []
   action:
-  - device_id: c01d564f9bc847bd97567386629cffbc
+  - device_id: 1609cdb452454b359a8bec57a4e80499
     domain: switch
-    entity_id: switch.washroom_washroom
+    entity_id: switch.study_washroom_exhaust
     type: turn_off
 - id: '1592823199350'
   alias: Study Aircon 26 C On
@@ -224,14 +227,14 @@
   description: ''
   trigger:
   - entity_id: media_player.home_theatre
-    for: 00:01:00
+    for: 00:05:00
     platform: state
     to: 'off'
   condition: []
   action:
-  - device_id: 0649f712ef3940809232190c4c82310e
+  - device_id: a6bc47a299154deaab7ae3c1dc598a7e
     domain: switch
-    entity_id: switch.6010cooler_6010cooler
+    entity_id: switch.marantz_6010_cooler
     type: turn_off
 - id: '1592855545096'
   alias: Marantz AV Cooler On
@@ -242,10 +245,10 @@
     to: 'on'
   condition: []
   action:
-  - device_id: 0649f712ef3940809232190c4c82310e
+  - device_id: a6bc47a299154deaab7ae3c1dc598a7e
     domain: switch
-    entity_id: switch.6010cooler_6010cooler
-    type: turn_on
+    entity_id: switch.marantz_6010_cooler
+    type: turn_off
 - alias: Publish phase1 value
   trigger:
     platform: state
@@ -255,6 +258,7 @@
     data_template:
       payload: '{{trigger.to_state.state}}'
       topic: hasend/power1
+  id: b7b44c5f19114f83a4d889b45dad0727
 - alias: Publish phase2 value
   trigger:
     platform: state
@@ -264,6 +268,7 @@
     data_template:
       payload: '{{trigger.to_state.state}}'
       topic: hasend/power2
+  id: 7d0413182fb641e896f997a563f1950e
 - alias: Publish daily energy value
   trigger:
     platform: state
@@ -273,6 +278,7 @@
     data_template:
       payload: '{{trigger.to_state.state}}'
       topic: hasend/energydly
+  id: 3bd1b9d2c2c94901a972a9a112ed772f
 - alias: Publish monthly energy value
   trigger:
     platform: state
@@ -282,6 +288,7 @@
     data_template:
       payload: '{{trigger.to_state.state}}'
       topic: hasend/energymnthly
+  id: 7e15f7bd90fe4702bf33bae5e7b361f3
 - alias: Publish outdoor temp
   trigger:
     platform: state
@@ -291,6 +298,7 @@
     data_template:
       payload: '{{trigger.to_state.state}}'
       topic: hasend/tempodr
+  id: d9afdd8aee5744d6b4a87617013b086d
 - alias: Publish house temp
   trigger:
     platform: state
@@ -300,6 +308,7 @@
     data_template:
       payload: '{{trigger.to_state.state}}'
       topic: hasend/tempindr
+  id: e2e6a600e9b84a1394125b4674c3867b
 - alias: Publish bedroom temp
   trigger:
     platform: state
@@ -309,6 +318,7 @@
     data_template:
       payload: '{{trigger.to_state.state}}'
       topic: hasend/tempbr
+  id: 42cbdd6549fe44aeadcc37638ced87fb
 - alias: Publish owm temp
   trigger:
     platform: state
@@ -318,6 +328,7 @@
     data_template:
       payload: '{{trigger.to_state.state}}'
       topic: hasend/tempowm
+  id: 6af1daa1021042559bf001ec6d7a0c40
 - alias: Publish owm conditions
   trigger:
     platform: state
@@ -327,3 +338,127 @@
     data_template:
       payload: '{{trigger.to_state.state}}'
       topic: hasend/conditionowm
+  id: 85133a398fd34c28b108b16c82c97e7f
+- id: '1594472709266'
+  alias: Auto Lights - Step 1
+  description: ''
+  trigger:
+  - above: '16'
+    below: '16.9'
+    entity_id: sensor.ambient_light
+    platform: numeric_state
+  condition:
+  - after: '16:00'
+    before: '23:59:00'
+    condition: time
+  action:
+  - scene: scene.lights_step_1
+- id: '1594473621991'
+  alias: Auto Lights - Step 2
+  description: ''
+  trigger:
+  - above: '17'
+    below: '18.8'
+    entity_id: sensor.ambient_light
+    platform: numeric_state
+  condition:
+  - after: 09:00:00
+    before: '23:59:00'
+    condition: time
+  action:
+  - scene: scene.lights_step_2
+- id: '1594554141571'
+  alias: Auto Lights - Step 3
+  description: ''
+  trigger:
+  - above: '19.0'
+    below: '20.8'
+    entity_id: sensor.ambient_light
+    platform: numeric_state
+  condition:
+  - after: 09:00:00
+    before: '23:59:00'
+    condition: time
+  action:
+  - scene: scene.lights_step_3
+- id: '1594554236224'
+  alias: Auto Lights - Step 4
+  description: ''
+  trigger:
+  - above: '21'
+    below: '22.8'
+    entity_id: sensor.ambient_light
+    platform: numeric_state
+  condition:
+  - after: 09:00:00
+    before: '23:59:00'
+    condition: time
+  action:
+  - scene: scene.lights_step_4
+- id: '1594554320755'
+  alias: Auto Lights - Step 5
+  description: ''
+  trigger:
+  - above: '23'
+    entity_id: sensor.ambient_light
+    platform: numeric_state
+  condition:
+  - after: 09:00:00
+    before: '23:59:00'
+    condition: time
+  action:
+  - scene: scene.lights_step_5
+- id: '1594554380749'
+  alias: Auto Lights - Step 6
+  description: ''
+  trigger:
+  - above: '25.0'
+    entity_id: sensor.ambient_light
+    platform: numeric_state
+  condition:
+  - after: 09:00:00
+    before: '23:59:00'
+    condition: time
+  action:
+  - scene: scene.lights_step_6
+- id: '1594591996201'
+  alias: AV Rack On
+  description: ''
+  trigger:
+  - hours: '*'
+    minutes: /1
+    platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: template
+    value_template: "{{ (states('sensor.av_rack_temperature')) | float -\n (states('sensor.house_temperature'))\
+      \ | float }}"
+  action:
+  - device_id: 310ec57a775a448f84525504430a212e
+    domain: switch
+    entity_id: switch.denon_fan
+    type: turn_on
+- id: '1594640065984'
+  alias: Auto Lights - All off
+  description: ''
+  trigger:
+  - below: '15'
+    entity_id: sensor.ambient_light
+    platform: numeric_state
+  condition: []
+  action:
+  - scene: scene.daylight
+- id: '1594644562486'
+  alias: Denon Cooler Off
+  description: ''
+  trigger:
+  - entity_id: media_player.denon
+    for: 00:01:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - device_id: 310ec57a775a448f84525504430a212e
+    domain: switch
+    entity_id: switch.denon_fan
+    type: turn_off

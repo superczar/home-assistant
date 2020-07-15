@@ -9,23 +9,7 @@
         friendly_name: "Bedroom Dehumidifier"
 
 
-- platform: mqtt
-  name: "Closet Cooler"
-  state_topic: "cmnd/2chswitch/POWER1"
-  command_topic: "cmnd/2chswitch/POWER1"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  retain: true
 
-- platform: mqtt
-  name: "Denon Cooler"
-  state_topic: "stat/2chswitch/POWER2"
-  command_topic: "cmnd/2chswitch/POWER2"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  retain: true
 #################################################################
 ##  Template Switches
 #################################################################

@@ -67,73 +67,75 @@ apcupsd:
 
 weather:
   - platform: openweathermap
-    api_key: xxx
+    api_key: c488bcccdef2b0a0749c12324e638b57
 
 emoncms_history:
-  api_key: xxx
+  api_key: 278d467f3140f10fb6004a49502c01f1
   url: http://192.168.5.178/emoncms
   inputnode: 1
   whitelist:
     - sensor.combined_energy_total
+    - sensor.combined_power_total
     - sensor.watts1_energy_power
     - sensor.watts2_energy_power
+    - sensor.study_temperature
     - sensor.bedroom_temperature
-    - sensor.closet_temperature
+    - sensor.av_rack_temperature
     - sensor.kitchen_temperature
     - sensor.house_temperature
     - sensor.watts1_ds18b20_temperature
     - sensor.barometric_pressure
-    - sensor.watts1_energy_frequency
     - sensor.watts1_energy_voltage
-    - sensor.watts2_energy_frequency
     - sensor.watts2_energy_voltage
+    - sensor.ups_load
 
 #################################################################
-## DB Logging for sensors
+## Alexa Emulated Hue
 #################################################################
-influxdb:
-  host: 192.168.5.155
-  include:
-    entities:
-    - sensor.barometric_pressure
-    - sensor.bedroom_temperature
-    - sensor.closet_temperature
-    - binary_sensor.front_door_ding
-    - binary_sensor.front_door_motion
-    - sensor.house_temperature
-    - sensor.kitchen_temperature
-    - sensor.ups_load
-    - sensor.watts1_energy_power
-    - sensor.watts1_energy_today
-    - sensor.watts1_energy_total
-    - sensor.watts1_energy_yesterday
-    - sensor.watts2_energy_power
-    - sensor.watts2_energy_today
-    - sensor.watts2_energy_total
-    - sensor.watts2_energy_yesterday
-    - sensor.watts1_ds18b20_temperature
-    - sensor.combined_energy_total
-  component_config_glob:
-    sensor.*humidity:
-      override_measurement: humidity
-    sensor.*temperature:
-      override_measurement: temperature
-    sensor.*pressure:
-      override_measurement: pressure
-    sensor.*power:
-      override_measurement: watts
-    sensor.*motion:
-      override_measurement: motion
-    sensor.*ding:
-      override_measurement: ring
-    sensor.*load:
-      override_measurement: percentage
-    sensor.*energy_total:
-      override_measurement: kWH
-    sensor.*energy_today:
-      override_measurement: kWH
-    sensor.*energy_yesterday:
-      override_measurement: kWH
+emulated_hue:
+  host_ip: 192.168.5.64
+  listen_port: 8300
+  expose_by_default: false
+  entities:
+    light.porch_bulb:
+      name: "Porch Bulb"
+      hidden: false
+    switch.porch_lamp:
+      name: "Porch Lamp"
+      hidden: false
+    switch.pool_filter:
+      name: "Garden Lamp"
+      hidden: false
+    switch.kitchen_lamp:
+      name: "Kitchen Lamp"
+      hidden: false
+    switch.guest_tubelight:
+      name: " Guest Tubelight"
+      hidden: false
+    remote.living_room:
+      name: "Living Room TV"
+      hidden: false
+    input_boolean.polk_sub:
+      name: "Subwoofer"
+      hidden: false
+    switch.bedroom_fan:
+      name: "Bedroom Fan"
+      hidden: false
+    remote.home_theatre:
+      name: "Home Theatre"
+      hidden: false
+    switch.balcony_lamp:
+      name: "Balcony"
+      hidden: false
+    switch.bf0d4aaa25d7bd1cb0jzfe:
+      name: "Geyser"
+      hidden: false
+    light.living_wall_lamps:
+      name: "Living Wall"
+      hidden: false
+    light.bedroom_bulb_2:
+      name: "Bedroom Bulb"
+      hidden: false
 
 
 #################################################################
@@ -148,6 +150,69 @@ logbook:
   exclude:
     entity_globs:
       - automation.publish*
+      
+recorder:
+  db_url: mysql://homeassistant:ladakh@core-mariadb/homeassistant?charset=utf8
+  exclude:
+    entity_globs:
+      - automation.publish*
+    entities:
+        - binary_sensor.ping_binary_sensor
+        - sensor.watts1_energy_factor_3
+        - sensor.watts1_energy_total
+        - sensor.watts1_energy_apparentpower_1
+        - sensor.watts1_energy_totalstarttime
+        - sensor.watts1_energy_apparentpower_2
+        - sensor.watts1_energy_apparentpower_3
+        - sensor.watts1_energy_power_1
+        - sensor.watts1_energy_voltage_1
+        - sensor.watts1_energy_power_2
+        - sensor.watts1_energy_voltage_2
+        - sensor.watts1_energy_current_1
+        - sensor.watts1_energy_power_3
+        - sensor.watts1_energy_voltage_3
+        - sensor.watts1_energy_current_2
+        - sensor.watts1_energy_yesterday
+        - sensor.watts1_energy_current_3
+        - sensor.watts1_energy_reactivepower_1
+        - sensor.watts1_energy_reactivepower_2
+        - sensor.watts1_energy_factor_1
+        - sensor.watts1_energy_reactivepower_3
+        - sensor.watts1_energy_factor_2
+        - sensor.watts1_energy_today
+        - sensor.watts2_energy_totalstarttime
+        - sensor.watts2_energy_today
+        - sensor.watts2_energy_total
+        - sensor.watts2_energy_yesterday
+        - sensor.watts1_energy_frequency
+        - sensor.watts1_energy_reactivepower
+        - sensor.watts1_energy_factor
+        - sensor.watts1_ds18b20_id
+        - sensor.watts1_energy_apparentpower
+        - sensor.watts2_energy_reactivepower_3
+        - sensor.watts2_energy_apparentpower_3
+        - sensor.watts2_energy_power_1
+        - sensor.watts2_energy_current_1
+        - sensor.watts2_energy_current_2
+        - sensor.watts2_energy_current_3
+        - sensor.watts2_energy_voltage_1
+        - sensor.watts2_energy_power_2
+        - sensor.watts2_energy_factor
+        - sensor.watts2_energy_voltage_2
+        - sensor.watts2_energy_factor_1
+        - sensor.watts2_energy_power_3
+        - sensor.watts2_energy_voltage_3
+        - sensor.watts2_energy_factor_2
+        - sensor.watts2_energy_reactivepower
+        - sensor.watts2_energy_apparentpower
+        - sensor.watts2_energy_factor_3
+        - sensor.watts2_energy_reactivepower_1
+        - sensor.watts2_energy_apparentpower_1
+        - sensor.watts2_energy_frequency
+        - sensor.watts2_energy_reactivepower_2
+        - sensor.watts2_energy_apparentpower_2
+        - sensor.watts1_status
+        - sensor.watts2_status
 #################################################################
 ## Groups
 #################################################################
@@ -166,6 +231,12 @@ light:
       - light.floor_lamp_1
       - light.floor_lamp_2
 
+  - platform: group
+    name: Living Wall Lamps
+    entities:
+      - light.living_wall_1
+      - light.living_wall_2_2
+      - light.living_wall_3
 #################################################################
 ## HVAC
 #################################################################

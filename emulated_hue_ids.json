@@ -1,0 +1,21 @@
+{
+    "1": "switch.tasmota_tasmota_2",
+    "10": "remote.living_room",
+    "11": "switch.kitchen_lamp",
+    "12": "switch.porch_lamp",
+    "13": "switch.bedroom_fan",
+    "14": "switch.guest_tubelight",
+    "15": "switch.balcony_lamp",
+    "16": "light.kitchen_bulb",
+    "17": "light.living_wall_lamps",
+    "18": "light.bedroom_bulb_2",
+    "19": "switch.bf0d4aaa25d7bd1cb0jzfe",
+    "2": "light.porch_bulb",
+    "3": "light.kitchensol_kitchensol",
+    "4": "switch.accent1_accent1",
+    "5": "switch.guesttube_guesttube",
+    "6": "switch.bedfan_bedfan",
+    "7": "input_boolean.polk_sub",
+    "8": "switch.pool_filter",
+    "9": "remote.home_theatre"
+}

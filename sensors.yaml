@@ -59,6 +59,12 @@
       unit_of_measurement: 'kWh'
       value_template: "{{ states('sensor.energy_phase1') | float + states('sensor.energy_phase2') | float }}"
 
+- platform: template
+  sensors:
+    combined_power_total:
+      unit_of_measurement: 'W'
+      value_template: "{{ states('sensor.watts1_energy_power') | float + states('sensor.watts2_energy_power') | float }}"
+
 - platform: openweathermap
   api_key: c488bcccdef2b0a0749c12324e638b57
   monitored_conditions:
@@ -76,3 +82,9 @@
     energy_monthly_mqtt:
       unit_of_measurement: 'kWh'
       value_template: "{{ states('sensor.monthly_energy') | round(1) }}"
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /
+    - type: memory_free

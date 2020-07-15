@@ -53,6 +53,6 @@ script_polk:
     sequence:
       - service: remote.send_command
         data_template:
-          entity_id: remote.bedroom
+          entity_id: remote.living_room
           device: "70000055"
           command: "PowerToggle"
