@@ -148,7 +148,8 @@ Notes:
   a. 2 X Klipsch Gate – Frontyard and Guest room speakers
   b. 1 X Paradigm PW Link – Kitchen Speakers
   c. 1X Paradign PW Amp – Bedroom Speakers
-4. Homepods
+4. Homepods and Airplay devices: Homepods (and Siri elsewhere) work well through the native homekit integration 
+5. Video Streaming : Couple of Apple TVs and a couple of FTV 4Ks - No need to integrate them into HA so far. There is a lone Google TV device (Xiaomi) and a couple of other google rendrers (TV in-built) that do show up on HA but have been set to ignore
 
 ## Sensors
 
